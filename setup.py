@@ -5,6 +5,8 @@ import io
 import os
 import sys
 from setuptools.dist import Distribution
+import shutil
+from Cython.Build import cythonize
 
 if sys.version_info < (2, 6):
     raise SystemExit("""matplotlib and the basemap toolkit require Python 2.6 or later.""")
@@ -93,10 +95,14 @@ else:
 # for a distutils bug - http://bugs.python.org/issue2437).
 if sys.platform == 'win32':
     runtime_lib_dirs = []
+    shutil.copy(os.path.join(GEOS_dir, r'build\bin\Release\geos_c.dll'), r'lib\mpl_toolkits\basemap')
+    shutil.copy(os.path.join(GEOS_dir, r'build\bin\Release\geos.dll'), r'lib\mpl_toolkits\basemap')
+    platform_datafiles = ['geos_c.dll', 'geos.dll']
 else:
     runtime_lib_dirs = geos_library_dirs
+    platform_datafiles = []
 
-extensions = [ Extension("_geoslib",['src/_geoslib.c'],
+extensions = [ Extension("mpl_toolkits.basemap._geoslib",['src/_geoslib.c'],
                          library_dirs=geos_library_dirs,
                          runtime_library_dirs=runtime_lib_dirs,
                          include_dirs=geos_include_dirs,
@@ -121,8 +127,8 @@ package_dirs = {
     "mpl_toolkits.basemap_data": data_folder,
 }
 package_data = {
-    "mpl_toolkits.basemap_data":
-        data_files,
+    "mpl_toolkits.basemap_data": data_files,
+    "mpl_toolkits.basemap": platform_datafiles,
 }
 install_requires = get_install_requirements("requirements.txt")
 
@@ -157,6 +163,7 @@ setup(
   packages          = packages,
   namespace_packages = namespace_packages,
   package_dir       = package_dirs,
-  ext_modules       = extensions,
-  package_data = package_data
+  ext_modules       = cythonize(extensions),
+  package_data = package_data,
+  include_package_data = True,
   )

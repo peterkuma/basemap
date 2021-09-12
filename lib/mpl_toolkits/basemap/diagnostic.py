@@ -37,7 +37,7 @@ def package_versions():
     from pyproj import __version__ as pyproj_version
     from shapefile import __version__ as pyshp_version
 
-    import _geoslib
+    import mpl_toolkits.basemap._geoslib
     from mpl_toolkits.basemap import __version__ as basemap_version
     
     try:

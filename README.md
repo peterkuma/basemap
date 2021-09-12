@@ -1,4 +1,6 @@
-# Basemap
+# Basemap (fork)
+
+This is a fork of basemap with support for building on Windows.
 
 Plot on map projections (with coastlines and political boundaries)
 using matplotlib.

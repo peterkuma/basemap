@@ -50,7 +50,7 @@ import sys, os, math
 from .proj import Proj
 import numpy as np
 import numpy.ma as ma
-import _geoslib
+import mpl_toolkits.basemap._geoslib
 import functools
 
 # basemap data files now installed in lib/matplotlib/toolkits/basemap/data
