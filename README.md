@@ -2,6 +2,47 @@
 
 This is a fork of basemap with support for building on Windows.
 
+Instructions for building on Windows:
+
+1. Install:
+
+   - [Anaconda 3](https://www.anaconda.com/)
+   - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+   - [cmake](https://cmake.org/)
+
+2. Download and unpack:
+
+   - [GEOS](https://trac.osgeo.org/geos/) (`geos-3.9.1.tar.bz2` or later)
+   	 source code
+   - basemap source code
+
+3. Open the `Developer Command Prompt for VS 2019` from the Windows Start Menu
+   and run:
+
+   ```sh
+   cd <geos-dir>
+   mkdir build build
+   cmake ..
+   ```
+
+   where `<geos-dir>` is the directory where you unpacked GEOS. Open `GEOS.sln`
+   located in the GEOS build directory in Visual Studio 2019, set solution
+   configuration to `Release` and perform `Build -> Build solution`.
+
+4. Open the `Anaconda Prompt` from the Windows Start Menu and run:
+
+   ```sh
+   cd <basemap-dir>
+   set GEOS_DIR=<geos-dir>
+   python setup.py bdist_wheel
+   pip install dist\basemap-1.2.2+dev-cp38-cp38-win_amd64.whl
+   ```
+
+   where `<basemap-dir>` and `<geos-dir>` are the directories where you
+   unpacked the respective packages.
+
+## About
+
 Plot on map projections (with coastlines and political boundaries)
 using matplotlib.
 
