@@ -1,9 +1,9 @@
-# Basemap: fork with support for Windows
+# Basemap: fork with support for Windows and macOS
 
 This is a fork of [basemap](https://github.com/matplotlib/basemap) with support
-for recent Python versions (Anaconda Python 3.8) on Windows, since the original
-basemap repository is discontinued and is not available on recent versions of
-Python on Windows.
+for recent Python versions (Anaconda Python 3.8) on Windows and macOS, since
+the original basemap repository is discontinued and is not available on recent
+versions of Python on Windows, and no longer builds on macOS.
 
 ## Installation
 
@@ -13,7 +13,13 @@ To install on Anaconda Python 3.8 on Windows (64-bit) in `Anaconda Prompt`:
 pip install https://github.com/peterkuma/basemap/releases/download/v1.2.2%2Bdev.1/basemap-1.2.2dev-cp38-cp38-win_amd64.whl
 ```
 
-## Building from source
+To install on Anaconda Python 3.8 on macOS:
+
+```
+pip3 install git+https://github.com/matplotlib/basemap.git
+```
+
+## Building from source (Windows)
 
 1. Install:
 
