@@ -102,7 +102,7 @@ else:
     runtime_lib_dirs = geos_library_dirs
     platform_datafiles = []
 
-extensions = [ Extension("mpl_toolkits.basemap._geoslib",['src/_geoslib.c'],
+extensions = [ Extension("mpl_toolkits.basemap._geoslib",['src/_geoslib.pyx'],
                          library_dirs=geos_library_dirs,
                          runtime_library_dirs=runtime_lib_dirs,
                          include_dirs=geos_include_dirs,
